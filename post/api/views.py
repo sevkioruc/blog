@@ -1,4 +1,4 @@
-from rest_framework.generics import ListAPIView, RetrieveAPIView, DestroyAPIView, UpdateAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView, DestroyAPIView, UpdateAPIView, CreateAPIView
 from post.models import PostModel
 from .serializers import PostSerializer
 
@@ -20,3 +20,7 @@ class PostUpdatePIView(UpdateAPIView):
     queryset = PostModel.objects.all()
     serializer_class = PostSerializer
     lookup_field = 'pk'
+
+class PostCreatePIView(CreateAPIView):
+    queryset = PostModel.objects.all()
+    serializer_class = PostSerializer
