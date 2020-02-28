@@ -1,5 +1,12 @@
 from rest_framework import serializers
-
-class PostSerializer(serializers.Serializer):
-    title = serializers.CharField(max_length=200)
-    content = serializers.CharField(max_length=200)
+from post.models import PostModel
+class PostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PostModel
+        fields = [
+            'title',
+            'content',
+            'publishingDate',
+            'creator',
+            'image'
+        ]

@@ -6,3 +6,4 @@ class PostModel(models.Model):
     content = models.TextField()
     publishingDate = models.DateTimeField(auto_now=True)
     creator = models.ForeignKey(User, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='media/post/')
