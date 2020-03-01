@@ -9,14 +9,26 @@ import { Post } from 'src/models/post.model';
 })
 export class DashboardComponent implements OnInit {
 
+  posts: Post[] = [];
+
   constructor(private postService: PostService) { }
 
   ngOnInit() {
+    this.getPosts();
   }
+
 
   getPosts() {
     this.postService.getPosts().subscribe((posts: Post[]) => {
-      console.log(posts);
+      this.posts = posts;
+    });
+  }
+
+  deletePost(post: Post) {
+    this.postService.deletePost(post.id).subscribe(() => {
+      console.log('Successfully');
+    }, () => {
+      console.log('Failed');
     });
   }
 

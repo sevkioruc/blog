@@ -1,1 +1,24 @@
-<button (click)="getPosts()">Get Posts</button>
+<div fxLayout="column">
+    <div fxLayout="row">
+        <div fxLayout="column" fxFlex="20"> </div>
+
+        <div fxLayout="column" fxFlex="60">
+            <div *ngFor="let post of posts">
+                <mat-card class="post-wrapper">
+                    <div class="title" fxLayout="row" fxLayoutAlign="center center">
+                        {{post.title}}
+                    </div>
+                    <div class="content" fxLayout="row">
+                        {{post.content}}
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="end end">
+                        <button mat-raised-button class="update-btn" color="primary">Update</button>
+                        <button (click)="deletePost(post)" mat-raised-button class="delete-btn" color="warn">Delete</button>
+                    </div>
+                </mat-card>
+            </div>
+        </div>
+
+        <div fxLayout="column" fxFlex="20"></div>
+    </div>
+</div>

@@ -14,4 +14,8 @@ export class PostService {
         return this.http.get(this.baseUrl + 'api/post/list');
     }
 
+    deletePost(id: number) {
+        console.log(id);
+        return this.http.delete(this.baseUrl + 'api/post/delete/' + id);
+    }
 }
