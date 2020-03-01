@@ -1,0 +1,15 @@
+<div class="mat-typography create-post-form-wrapper" fxFlex="100">
+    <form [formGroup]="createPostForm" fxLayout="row" fxLayoutAlign="center center">
+      <div fxLayout="column" fxFlex="30">
+        <mat-form-field>
+          <input type="text" matInput placeholder="Title" formControlName="title">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <textarea matInput class="content" placeholder="Content" formControlName="content"></textarea>
+        </mat-form-field>
+        <div fxLayout="row" fxLayoutAlign="end end">
+          <button mat-raised-button	color="primary" (click)="createPost()">Create</button>
+        </div>
+      </div>
+    </form>
+</div>

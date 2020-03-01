@@ -18,4 +18,5 @@ export class PostService {
         console.log(id);
         return this.http.delete(this.baseUrl + 'api/post/delete/' + id);
     }
+
 }

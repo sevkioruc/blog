@@ -26,9 +26,9 @@ export class DashboardComponent implements OnInit {
 
   deletePost(post: Post) {
     this.postService.deletePost(post.id).subscribe(() => {
-      console.log('Successfully');
+      console.log('Successfully deleted');
     }, () => {
-      console.log('Failed');
+      console.log('Could not delete');
     });
   }
 
