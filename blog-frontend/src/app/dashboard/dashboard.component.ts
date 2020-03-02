@@ -26,7 +26,10 @@ export class DashboardComponent implements OnInit {
 
   deletePost(post: Post) {
     this.postService.deletePost(post.id).subscribe(() => {
-      console.log('Successfully deleted');
+      const index = this.posts.findIndex((p) => p.id === post.id);
+      if (index !== -1) {
+        this.posts.splice(index, 1);
+      } 
     }, () => {
       console.log('Could not delete');
     });
