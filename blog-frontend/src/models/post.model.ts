@@ -1,6 +1,6 @@
 export class Post {
-    id: number;
+    id?: number;
     title: string;
     content: string;
-    userId: number;
+    userId?: number;
 }

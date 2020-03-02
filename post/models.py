@@ -5,5 +5,4 @@ class PostModel(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField()
     publishingDate = models.DateTimeField(auto_now=True)
-    creator = models.ForeignKey(User, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='media/post/')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1, editable=False)

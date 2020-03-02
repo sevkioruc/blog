@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Post } from 'src/models/post.model';
 
 @Injectable({providedIn: 'root'})
 export class PostService { 
@@ -7,7 +8,6 @@ export class PostService {
     private readonly baseUrl = 'http://127.0.0.1:8000/';
 
     constructor(private http: HttpClient) {
-
     }
 
     getPosts() {
@@ -15,8 +15,11 @@ export class PostService {
     }
 
     deletePost(id: number) {
-        console.log(id);
         return this.http.delete(this.baseUrl + 'api/post/delete/' + id);
+    }
+
+    createPost(post: Post) {
+        return this.http.post(this.baseUrl + 'api/post/create', post);
     }
 
 }

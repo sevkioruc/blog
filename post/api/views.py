@@ -16,11 +16,11 @@ class PostDeleteAPIView(DestroyAPIView):
     serializer_class = PostSerializer
     lookup_field = 'pk'
 
-class PostUpdatePIView(UpdateAPIView):
+class PostUpdateAPIView(UpdateAPIView):
     queryset = PostModel.objects.all()
     serializer_class = PostSerializer
     lookup_field = 'pk'
 
-class PostCreatePIView(CreateAPIView):
+class PostCreateAPIView(CreateAPIView):
     queryset = PostModel.objects.all()
     serializer_class = PostSerializer

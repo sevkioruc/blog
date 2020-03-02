@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from post.models import PostModel
+
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = PostModel
@@ -8,6 +9,5 @@ class PostSerializer(serializers.ModelSerializer):
             'title',
             'content',
             'publishingDate',
-            'creator',
-            'image'
+            'user'
         ]
