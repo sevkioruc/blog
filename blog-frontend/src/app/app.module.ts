@@ -10,6 +10,7 @@ import { MatButtonModule, MatToolbarModule, MatCardModule, MatFormFieldModule, M
 import { CreatePostComponent } from './create-post/create-post.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from 'src/app-routing-module';
+import { UpdatePostComponent } from './update-post/update-post.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { AppRoutingModule } from 'src/app-routing-module';
     DashboardComponent,
     NavbarComponent,
     CreatePostComponent,
+    UpdatePostComponent
   ],
   imports: [
     BrowserModule,

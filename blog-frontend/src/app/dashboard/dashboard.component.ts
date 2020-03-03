@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from 'src/services/post.service';
 import { Post } from 'src/models/post.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'dashboard',
@@ -11,12 +12,12 @@ export class DashboardComponent implements OnInit {
 
   posts: Post[] = [];
 
-  constructor(private postService: PostService) { }
+  constructor(private postService: PostService,
+              private router: Router) { }
 
   ngOnInit() {
     this.getPosts();
   }
-
 
   getPosts() {
     this.postService.getPosts().subscribe((posts: Post[]) => {
@@ -33,6 +34,11 @@ export class DashboardComponent implements OnInit {
     }, () => {
       console.log('Could not delete');
     });
+  }
+
+  updatePost(post: Post) {
+    localStorage.setItem('postId', post.id.toString());
+    this.router.navigate(['/update']);
   }
 
 }

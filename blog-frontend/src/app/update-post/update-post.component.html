@@ -1,8 +1,8 @@
-<div class="mat-typography create-post-form-wrapper" fxFlex="100">
+<div class="mat-typography update-post-form-wrapper" fxFlex="100">
     <div class="header" fxLayout="row" fxLayoutAlign="center center">
-      <h2>Create Form</h2>
+      <h2>Update Form</h2>
     </div>
-    <form [formGroup]="createPostForm" fxLayout="row" fxLayoutAlign="center center">
+    <form [formGroup]="updatePostForm" fxLayout="row" fxLayoutAlign="center center">
       <div fxLayout="column" fxFlex="30">
         <mat-form-field>
           <input type="text" matInput placeholder="Title" formControlName="title">
@@ -11,7 +11,7 @@
             <textarea matInput class="content" placeholder="Content" formControlName="content"></textarea>
         </mat-form-field>
         <div fxLayout="row" fxLayoutAlign="end end">
-          <button mat-raised-button	color="primary" (click)="createPost()">Create</button>
+          <button mat-raised-button	color="primary" (click)="updatePost()">Update</button>
         </div>
       </div>
     </form>
