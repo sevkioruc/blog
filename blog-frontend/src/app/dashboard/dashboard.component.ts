@@ -37,7 +37,7 @@ export class DashboardComponent implements OnInit {
   }
 
   updatePost(post: Post) {
-    localStorage.setItem('postId', post.id.toString());
+    localStorage.setItem('post', JSON.stringify(post));
     this.router.navigate(['/update']);
   }
 
