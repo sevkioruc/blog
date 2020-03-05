@@ -1,0 +1,21 @@
+<div class="mat-typography register-form-wrapper" fxFlex="100">
+    <div class="header" fxLayout="row" fxLayoutAlign="center center">
+      <h2>Register Form</h2>
+    </div>
+    <form [formGroup]="registerForm" fxLayout="row" fxLayoutAlign="center center">
+      <div fxLayout="column" fxFlex="30">
+        <mat-form-field class="email">
+          <input type="email" matInput placeholder="Email" formControlName="email">
+        </mat-form-field>
+        <mat-form-field class="username">
+          <input type="text" matInput placeholder="Username" formControlName="username">
+        </mat-form-field>
+        <mat-form-field class="password">
+            <input type="password" matInput placeholder="Password" formControlName="password">
+          </mat-form-field>
+        <div fxLayout="row" fxLayoutAlign="end end">
+          <button mat-raised-button	color="primary" (click)="register()">Register</button>
+        </div>
+      </div>
+    </form>
+</div>

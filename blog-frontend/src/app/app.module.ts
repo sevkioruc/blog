@@ -11,6 +11,8 @@ import { CreatePostComponent } from './create-post/create-post.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from 'src/app-routing-module';
 import { UpdatePostComponent } from './update-post/update-post.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { UpdatePostComponent } from './update-post/update-post.component';
     DashboardComponent,
     NavbarComponent,
     CreatePostComponent,
-    UpdatePostComponent
+    UpdatePostComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

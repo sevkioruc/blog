@@ -12,29 +12,27 @@ export class UpdatePostComponent implements OnInit {
 
   updatePostForm: FormGroup;
   post: Post;
-  updatedpost: Post;
+  oldValuesOfPost: Post;
   constructor(private formBuilder: FormBuilder,
               private postService: PostService) {
   }
 
   ngOnInit() {
-    this.updatedpost = JSON.parse(localStorage.getItem('post'));
+    this.oldValuesOfPost = JSON.parse(localStorage.getItem('post'));
 
     this.updatePostForm = this.formBuilder.group({
-      title: [this.updatedpost.title, Validators.required],
-      content: [this.updatedpost.content, Validators.required]
+      title: [this.oldValuesOfPost.title, Validators.required],
+      content: [this.oldValuesOfPost.content, Validators.required]
     });
   }
 
   updatePost() {
-
     const post = {
       title: this.updatePostForm.value.title,
       content: this.updatePostForm.value.content,
     }
 
-    this.postService.updatePost(post, +this.updatedpost.id).subscribe(() => {
-      console.log(this.updatedpost.id);
+    this.postService.updatePost(post, +this.oldValuesOfPost.id).subscribe(() => {
       this.updatePostForm.reset();
     }, (err) => console.log(err));
   }
