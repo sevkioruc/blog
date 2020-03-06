@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UserService } from 'src/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'login',
@@ -10,7 +12,9 @@ export class LoginComponent implements OnInit {
   
   loginForm: FormGroup;
   
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,
+              private userService: UserService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -21,7 +25,15 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    alert('Connected');
+    const loginInfo = {
+      'username': this.loginForm.value.username,
+      'password': this.loginForm.value.password
+    }
+
+    this.userService.login(loginInfo).subscribe((token: {'refresh': string, 'access': string }) => {
+      localStorage.setItem('token',token.access);
+      this.router.navigate(['dashboard']);
+    });
   }
 
 }

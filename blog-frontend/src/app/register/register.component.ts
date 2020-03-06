@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from 'src/services/user.service';
 import { User } from 'src/models/user.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'register',
@@ -13,7 +14,8 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   
   constructor(private formBuilder: FormBuilder,
-              private userService: UserService) {
+              private userService: UserService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -33,8 +35,8 @@ export class RegisterComponent implements OnInit {
     }
 
     this.userService.register(user).subscribe(() => {
-      console.log(user);
-    });
+      this.router.navigate(['dashboard'])
+    }, () => console.log('Failed to register !'));
   }
 
 }
