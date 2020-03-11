@@ -6,13 +6,22 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NavbarComponent } from './navbar/navbar.component';
-import { MatButtonModule, MatToolbarModule, MatCardModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import 
+      {
+        MatButtonModule, 
+        MatToolbarModule,
+        MatCardModule,
+        MatFormFieldModule,
+        MatInputModule 
+      }
+        from '@angular/material';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AppRoutingModule } from 'src/app-routing-module';
 import { UpdatePostComponent } from './update-post/update-post.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { AppRoutingModule } from './app-routing-module';
+import { AuthGuard } from 'src/guard/auth-guard';
 
 @NgModule({
   declarations: [
@@ -38,7 +47,7 @@ import { RegisterComponent } from './register/register.component';
     AppRoutingModule
     
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
