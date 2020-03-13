@@ -1,12 +1,12 @@
 from rest_framework.generics import ListAPIView, RetrieveAPIView, DestroyAPIView, UpdateAPIView, CreateAPIView
 from post.models import PostModel
 from .serializers import PostSerializer
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 
 class PostListAPIView(ListAPIView):
     queryset = PostModel.objects.all()
     serializer_class = PostSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
 
 class PostDetailAPIView(RetrieveAPIView):
     queryset = PostModel.objects.all()
@@ -30,3 +30,6 @@ class PostCreateAPIView(CreateAPIView):
     queryset = PostModel.objects.all()
     serializer_class = PostSerializer
     permission_classes = [IsAuthenticated]
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
