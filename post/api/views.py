@@ -6,7 +6,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 class PostListAPIView(ListAPIView):
     queryset = PostModel.objects.all()
     serializer_class = PostSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
 
 class PostDetailAPIView(RetrieveAPIView):
     queryset = PostModel.objects.all()

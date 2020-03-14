@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from 'src/services/user.service';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'login',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   
   loginForm: FormGroup;
-  
+
   constructor(private formBuilder: FormBuilder,
               private userService: UserService,
               private router: Router) {
@@ -31,8 +32,11 @@ export class LoginComponent implements OnInit {
     }
 
     this.userService.login(loginInfo).subscribe((token: {'refresh': string, 'access': string }) => {
-      localStorage.setItem('token',token.access);
-      this.router.navigate(['dashboard']);
+      if(token) {
+        this.userService.authListener.next(true);
+        localStorage.setItem('token',token.access);
+        this.router.navigate(['dashboard']);
+      }
     });
   }
 
