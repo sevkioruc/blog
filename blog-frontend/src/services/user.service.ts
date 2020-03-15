@@ -8,6 +8,7 @@ import { Subject } from 'rxjs';
 export class UserService {
     loginInfo = {username: String, password: String};
     authListener: Subject<boolean> = new Subject();
+    tokenSub: Subject<string> = new Subject();
 
     private readonly baseUrl = 'http://127.0.0.1:8000/';
 
@@ -35,4 +36,5 @@ export class UserService {
         if(localStorage.getItem('token'))
             return true;
     }
+
 }

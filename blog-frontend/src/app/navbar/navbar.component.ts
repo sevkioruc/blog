@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UserService } from 'src/services/user.service';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'navbar',

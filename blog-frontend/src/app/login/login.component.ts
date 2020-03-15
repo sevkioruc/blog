@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from 'src/services/user.service';
 import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
 
 @Component({
   selector: 'login',
@@ -33,6 +32,7 @@ export class LoginComponent implements OnInit {
 
     this.userService.login(loginInfo).subscribe((token: {'refresh': string, 'access': string }) => {
       if(token) {
+        this.userService.tokenSub.next(token.access);
         this.userService.authListener.next(true);
         localStorage.setItem('token',token.access);
         this.router.navigate(['dashboard']);
