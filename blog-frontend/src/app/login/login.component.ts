@@ -35,9 +35,9 @@ export class LoginComponent implements OnInit {
         this.userService.tokenSub.next(token.access);
         this.userService.authListener.next(true);
         localStorage.setItem('token',token.access);
+        localStorage.setItem('username', this.loginForm.value.username);
         this.router.navigate(['dashboard']);
       }
     });
   }
-
 }

@@ -12,8 +12,8 @@
                         {{post.content}}
                     </div>
                     <div fxLayout="row" fxLayoutAlign="end end">
-                        <button (click)="updatePost(post)" mat-raised-button class="update-btn" color="primary">Update</button>
-                        <button (click)="deletePost(post)" mat-raised-button class="delete-btn" color="warn">Delete</button>
+                        <button *ngIf="isOwner(post.user)" (click)="updatePost(post)" mat-raised-button class="update-btn" color="primary">Update</button>
+                        <button *ngIf="isOwner(post.user)" (click)="deletePost(post)" mat-raised-button class="delete-btn" color="warn">Delete</button>
                     </div>
                 </mat-card>
             </div>

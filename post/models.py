@@ -6,3 +6,6 @@ class PostModel(models.Model):
     content = models.TextField()
     publishingDate = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
+
+    def __str__(self):
+        return self.title

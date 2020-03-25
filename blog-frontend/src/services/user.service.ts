@@ -6,6 +6,7 @@ import { Subject } from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 export class UserService {
+
     loginInfo = {username: String, password: String};
     authListener: Subject<boolean> = new Subject();
     tokenSub: Subject<string> = new Subject();
@@ -35,6 +36,10 @@ export class UserService {
     getIsAuth() {
         if(localStorage.getItem('token'))
             return true;
+    }
+
+    getCurrentUser(username: string) {
+        return this.http.get(this.baseUrl + `api/user/getUser/${username}`);
     }
 
 }

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { PostService } from 'src/services/post.service';
 import { Post } from 'src/models/post.model';
 import { Router } from '@angular/router';
+import { UserService } from 'src/services/user.service';
+import { User } from 'src/models/user.model';
 
 @Component({
   selector: 'dashboard',
@@ -11,12 +13,19 @@ import { Router } from '@angular/router';
 export class DashboardComponent implements OnInit {
 
   posts: Post[] = [];
+  activeUserId: number;
 
   constructor(private postService: PostService,
+              private userService: UserService,
               private router: Router) { }
 
   ngOnInit() {
     this.getPosts();
+
+    const username = localStorage.getItem('username');
+    this.userService.getCurrentUser(username).subscribe((user: User) => {
+      this.activeUserId = user.id;
+    })
   }
 
   getPosts() {
@@ -39,6 +48,10 @@ export class DashboardComponent implements OnInit {
   updatePost(post: Post) {
     localStorage.setItem('post', JSON.stringify(post));
     this.router.navigate(['/update']);
+  }
+
+  isOwner(postOwnerId: number) {
+    return this.activeUserId === postOwnerId;
   }
 
 }
